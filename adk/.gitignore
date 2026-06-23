@@ -6,7 +6,7 @@
 # Python
 __pycache__/
 *.py[cod]
-**/.venv/
+.venv/
 venv/
 
 # ADK runtime (sessions, artifacts)
@@ -24,6 +24,3 @@ adk_web_log*.txt
 .pytest_cache/
 .coverage
 htmlcov/
-
-# Ruff
-.ruff_cache/
