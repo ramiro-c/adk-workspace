@@ -25,5 +25,9 @@ adk_web_log*.txt
 .coverage
 htmlcov/
 
+# Node / Frontend
+node_modules/
+dist/
+
 # Ruff
 .ruff_cache/
