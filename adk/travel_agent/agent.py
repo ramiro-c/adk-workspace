@@ -146,13 +146,12 @@ DATABASE SCHEMA:
   departure_date, price_usd, duration_hours
 - hotels: id, name, city, price_per_night_usd, rating, amenities (text[])
 
-Available destinations for flights (9): Paris, Tokyo, New York, London, Madrid,
-Miami, Barcelona, Rome, Sydney.
-
-Available cities for hotels (8): Paris, Tokyo, New York, London, Madrid, Miami,
-Barcelona, Rome.
-
 Example queries:
+- Discover destinations: SELECT DISTINCT destination FROM flights
+- Flights to a city: SELECT * FROM flights WHERE destination ILIKE '%paris%'
+- Hotels in a city: SELECT * FROM hotels WHERE city ILIKE 'tokyo'
+- Cheap flights under $600: SELECT * FROM flights WHERE price_usd < 600
+- Hotels with pool: SELECT * FROM hotels WHERE 'Pool' = ANY(amenities)
 - Flights to Paris: SELECT * FROM flights WHERE destination ILIKE '%paris%'
 - Hotels in Tokyo: SELECT * FROM hotels WHERE city ILIKE 'tokyo'
 - Cheap flights under $600: SELECT * FROM flights WHERE price_usd < 600
@@ -161,10 +160,9 @@ Example queries:
 
 When helping users:
 1. Use the query tool to search flights and hotels via SQL
-2. Use calculate_trip_budget(flight_price, hotel_price, num_nights) for totals
-3. Always present options clearly with prices
-4. If a user asks for a destination not in the available list, be honest about it
-   and suggest similar destinations that are available
+2. Use SELECT DISTINCT to discover available destinations before answering
+3. Use calculate_trip_budget(flight_price, hotel_price, num_nights) for totals
+4. Always present options clearly with prices
 
 If the database is unavailable, tell the user clearly and suggest they try again later.
 
